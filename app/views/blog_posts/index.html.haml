@@ -1,0 +1,25 @@
+%h1 Listing blog_posts
+
+%table
+  %tr
+    %th Title
+    %th Post
+    %th Published
+    %th Published on
+    %th
+    %th
+    %th
+
+  - @blog_posts.each do |blog_post|
+    %tr
+      %td= blog_post.title
+      %td= blog_post.post
+      %td= blog_post.published
+      %td= blog_post.published_on
+      %td= link_to 'Show', blog_post
+      %td= link_to 'Edit', edit_blog_post_path(blog_post)
+      %td= link_to 'Destroy', blog_post, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Blog post', new_blog_post_path
