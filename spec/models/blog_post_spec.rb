@@ -74,7 +74,7 @@ end
 #specify
 
 describe BlogPost do
-  before { @blog_post = BlogPost.new :title =>"foo" }
+  before { @blog_post = BlogPost.new :title =>"foo" }#, :published =>true }
   #instead of
   it "should not be published" do
     @blog_post.should_not be_published
@@ -117,18 +117,7 @@ describe "should and should not" do
   end
 end
 
-#subject
-#implicit subject
-describe BlogPost do
-end
-#explicit subject
-describe BlogPost do
-  subject { BlogPost.new :title =>'foo', :post => 'bar' }
-  it "can be talked to explicitely" do
-    subject.publish!
-    subject.published?.should == true
-  end
-end
+
 
 #Predicate Matchers
 # matchers (be_)
@@ -149,3 +138,15 @@ describe BlogPost do
 # expectation matchers for classes that implement Enumerable
 # should have_key
 
+#subject
+#implicit subject
+describe BlogPost do
+end
+#explicit subject
+describe BlogPost do
+  subject { BlogPost.new :title =>'foo', :post => 'bar' }
+  it "can be talked to explicitly" do
+    subject.publish!
+    subject.published?.should == true
+  end
+end
